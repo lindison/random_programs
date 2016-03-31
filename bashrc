@@ -21,8 +21,8 @@
 
 #   Change Prompt
 #   ------------------------------------------------------------
-    export PS1="__________________________________________________________________________\n| \w @ \h (\u) \n| => "
-    export PS2="touch me : "
+#    export PS1="__________________________________________________________________________\n| \w @ \h (\u) \n| => "
+#    export PS2="touch me : "
 #   Set Paths
 #   ------------------------------------------------------------
     export PATH="$PATH:/usr/local/bin/"
@@ -33,7 +33,7 @@
     export RERUN_MODULES="/Users/Lindis/rerun/modules"
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
-    export EDITOR=/usr/bin/nano
+    export EDITOR=/usr/bin/vim
 
 #   Set default blocksize for ls, df, du
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
@@ -47,11 +47,20 @@
 #   export CLICOLOR=1
 #   export LSCOLORS=ExFxBxDxCxegedabagacad
 
+#   Git
+
+if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+    source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+fi
+    export GIT_PROMPT_SHOW_UNTRACKED_FILES=no
 
 #   -----------------------------
 #   2. MAKE TERMINAL BETTER
 #   -----------------------------
 
+alias hacking='open http://hackertyper.net/'
+alias watson='ssh $SSHUSER@watson'
+alias jingles='ssh $SSHUSER@watson'
 alias working='LC_ALL=C tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR="1;32" grep --color "[^ ]"'
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
@@ -66,7 +75,7 @@ alias .3='cd ../../../'                     # Go back 3 directory levels
 alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
-alias edit='subl'                           # edit:         Opens any file in sublime editor
+alias edit='atom'                           # edit:         Opens any file in Atom editor
 alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 alias ~="cd ~"                              # ~:            Go Home
 alias c='clear'                             # c:            Clear terminal display
